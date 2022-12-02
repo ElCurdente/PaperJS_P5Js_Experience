@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet</title>
+  <link rel="stylesheet" href="../style.css">
+  <!-- Load the Paper.js library -->
+  <script src="../p5/p5.min.js"></script>
+  <script src="../p5/addons/p5.sound.min.js"></script>
+  <script type="text/javascript" src="../paper-full.js"></script>
+  <!-- Load external PaperScript and associate it with myCanvas -->
+  <script type="text/paperscript" src="../main.js" canvas="myCanvas"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.1/hands.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <button id="startButton" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Start
+    experience</button>
+
+  <!-- WEBCAM INPUT -->
+  <div class="column" style="display: none;">
+    <article class="panel is-info">
+      <p class="panel-heading">
+        Webcam Input
+      </p>
+      <div class="panel-block">
+        <video class="input_video3"></video>
+      </div>
+    </article>
+  </div>
+
+  <!-- MEDIAPIPE OUTPUT -->
+
+  <div class="panel-block" id="canvasvideo" style="position: absolute; top: 10px; left: 10px;">
+    <!-- <canvas class="output3" width="200px" height="200px"></canvas> -->
+  </div>
+  <div class="loading">
+    <div class="spinner"></div>
+  </div>
+  <div style="visibility: hidden; position: absolute;" class="control3"></div>
+  <canvas id="myCanvas" resize></canvas>
+
+  <script src="../mediaPipe.js"></script>
+  <script src="../server.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <!-- <script>
+    var socket = io();
+  </script> -->
+</body>
+
+</html>

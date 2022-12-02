@@ -1,3 +1,4 @@
+
 const video3 = document.getElementsByClassName('input_video3')[0];
 const out3 = document.createElement('canvas');
 canvasvideo.classList.add('output3');
@@ -64,7 +65,11 @@ const camera = new Camera(video3, {
   width: 480,
   height: 480
 });
-camera.start();
+const startButton = document.querySelector('#startButton');
+startButton.addEventListener('click', () => {
+  camera.start();
+  startButton.remove();
+});
 
 new ControlPanel(controlsElement3, {
   selfieMode: true,
@@ -97,32 +102,31 @@ new ControlPanel(controlsElement3, {
   });
 
 /**
- * P5
- */
- let fft, audio, toggleBtn, mapBass, mapTremble, mapMid, waveform, micLevel
- const s = (p) => {
- 
-     p.setup = () => {
+* P5
+*/
+let fft, audio, toggleBtn, mapBass, mapTremble, mapMid, waveform, micLevel
+const s = (p) => {
 
-         fft = new p5.AudioIn()
-         fft.start()
- 
-     }
-     
-     p.draw =() => {
-        micLevel = fft.getLevel()
-  
-     }
- }
- new p5(s)
+  p.setup = () => {
+    fft = new p5.AudioIn()
+    startButton.addEventListener('click', () => {
+      fft.start()
+    });
+  }
 
- const tick = () => {
+  p.draw = () => {
+    micLevel = fft.getLevel()
+  }
+}
+new p5(s)
+
+const tick = () => {
   requestAnimationFrame(tick);
- if (micLevel > 0.01) {
-     localStorage.setItem('micLevel', micLevel)
- } else {
-      localStorage.setItem('micLevel', '')
- }
+  if (micLevel > 0.01) {
+    localStorage.setItem('micLevel', micLevel)
+  } else {
+    localStorage.setItem('micLevel', '')
+  }
 }
 
 tick()
